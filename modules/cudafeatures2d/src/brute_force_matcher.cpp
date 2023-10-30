@@ -344,7 +344,7 @@ namespace
         };
         static const caller_t callersL2[] =
         {
-            0/*matchL2_gpu<unsigned char>*/, 0/*matchL2_gpu<signed char>*/,
+            matchL2_gpu<unsigned char>, 0/*matchL2_gpu<signed char>*/,
             0/*matchL2_gpu<unsigned short>*/, 0/*matchL2_gpu<short>*/,
             0/*matchL2_gpu<int>*/, matchL2_gpu<float>
         };
@@ -406,7 +406,7 @@ namespace
         };
         static const caller_t callersL2[] =
         {
-            0/*matchL2_gpu<unsigned char>*/, 0/*matchL2_gpu<signed char>*/,
+            matchL2_gpu<unsigned char>, 0/*matchL2_gpu<signed char>*/,
             0/*matchL2_gpu<unsigned short>*/, 0/*matchL2_gpu<short>*/,
             0/*matchL2_gpu<int>*/, matchL2_gpu<float>
         };

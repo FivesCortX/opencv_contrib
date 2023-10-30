@@ -367,13 +367,13 @@ namespace cv { namespace cuda { namespace device
         {
             if (mask.data)
             {
-                matchDispatcher<L2Dist>(static_cast< PtrStepSz<T> >(query), static_cast< PtrStepSz<T> >(train), maxDistance, SingleMask(mask),
+                matchDispatcher<L2Dist<T>>(static_cast< PtrStepSz<T> >(query), static_cast< PtrStepSz<T> >(train), maxDistance, SingleMask(mask),
                     trainIdx, distance, nMatches,
                     stream);
             }
             else
             {
-                matchDispatcher<L2Dist>(static_cast< PtrStepSz<T> >(query), static_cast< PtrStepSz<T> >(train), maxDistance, WithOutMask(),
+                matchDispatcher<L2Dist<T>>(static_cast< PtrStepSz<T> >(query), static_cast< PtrStepSz<T> >(train), maxDistance, WithOutMask(),
                     trainIdx, distance, nMatches,
                     stream);
             }
@@ -430,7 +430,7 @@ namespace cv { namespace cuda { namespace device
             const PtrStepSzi& trainIdx, const PtrStepSzi& imgIdx, const PtrStepSzf& distance, const PtrStepSz<unsigned int>& nMatches,
             cudaStream_t stream)
         {
-            matchDispatcher<L2Dist>(static_cast< PtrStepSz<T> >(query), (const PtrStepSz<T>*)trains, n, maxDistance, masks,
+            matchDispatcher<L2Dist<T>>(static_cast< PtrStepSz<T> >(query), (const PtrStepSz<T>*)trains, n, maxDistance, masks,
                 trainIdx, imgIdx, distance, nMatches,
                 stream);
         }

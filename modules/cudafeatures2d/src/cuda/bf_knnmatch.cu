@@ -1171,9 +1171,9 @@ namespace cv { namespace cuda { namespace device
             cudaStream_t stream)
         {
             if (mask.data)
-                matchDispatcher<L2Dist>(static_cast< PtrStepSz<T> >(query), static_cast< PtrStepSz<T> >(train), k, SingleMask(mask), trainIdx, distance, allDist, stream);
+                matchDispatcher<L2Dist<T>>(static_cast< PtrStepSz<T> >(query), static_cast< PtrStepSz<T> >(train), k, SingleMask(mask), trainIdx, distance, allDist, stream);
             else
-                matchDispatcher<L2Dist>(static_cast< PtrStepSz<T> >(query), static_cast< PtrStepSz<T> >(train), k, WithOutMask(), trainIdx, distance, allDist, stream);
+                matchDispatcher<L2Dist<T>>(static_cast< PtrStepSz<T> >(query), static_cast< PtrStepSz<T> >(train), k, WithOutMask(), trainIdx, distance, allDist, stream);
         }
 
         //template void matchL2_gpu<uchar >(const PtrStepSzb& queryDescs, const PtrStepSzb& trainDescs, int k, const PtrStepSzb& mask, const PtrStepSzb& trainIdx, const PtrStepSzb& distance, const PtrStepSzf& allDist, cudaStream_t stream);
@@ -1221,9 +1221,9 @@ namespace cv { namespace cuda { namespace device
             cudaStream_t stream)
         {
             if (masks.data)
-                match2Dispatcher<L2Dist>(static_cast< PtrStepSz<T> >(query), (const PtrStepSz<T>*)trains.ptr(), trains.cols, MaskCollection(masks.data), trainIdx, imgIdx, distance, stream);
+                match2Dispatcher<L2Dist<T>>(static_cast< PtrStepSz<T> >(query), (const PtrStepSz<T>*)trains.ptr(), trains.cols, MaskCollection(masks.data), trainIdx, imgIdx, distance, stream);
             else
-                match2Dispatcher<L2Dist>(static_cast< PtrStepSz<T> >(query), (const PtrStepSz<T>*)trains.ptr(), trains.cols, WithOutMask(), trainIdx, imgIdx, distance, stream);
+                match2Dispatcher<L2Dist<T>>(static_cast< PtrStepSz<T> >(query), (const PtrStepSz<T>*)trains.ptr(), trains.cols, WithOutMask(), trainIdx, imgIdx, distance, stream);
         }
 
         //template void match2L2_gpu<uchar >(const PtrStepSzb& query, const PtrStepSzb& trains, const PtrStepSz<PtrStepb>& masks, const PtrStepSzb& trainIdx, const PtrStepSzb& imgIdx, const PtrStepSzb& distance, cudaStream_t stream);
